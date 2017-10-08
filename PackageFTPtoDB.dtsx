@@ -1,0 +1,92 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/6/2017 5:18:06 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP"
+  DTS:CreatorName="Laptop\Галина"
+  DTS:DTSID="{3CD9C5C2-1063-41F3-B21A-0C3E214BC9D3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="1049"
+  DTS:ObjectName="PackageFTPtoDB"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{A392F683-C170-490D-9E02-08CADD9DA793}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[lclFTPsite]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{A3F3BE66-5B40-4547-B7A1-2474FFDED766}"
+      DTS:ObjectName="lclFTPsite">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\lclFTPsite" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Диспетчер FTP-сеансов]"
+      DTS:CreationName="FTP"
+      DTS:DTSID="{B9D4138E-AF3C-4627-A384-551D44B3784F}"
+      DTS:ObjectName="Диспетчер FTP-сеансов">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Localhost:21">
+          <DTS:FtpConnection
+            DTS:ServerName="Localhost"
+            DTS:ServerUserName="Галина">
+            <DTS:Property
+              DTS:Name="ServerPassword"
+              Sensitive="1"
+              Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA6S/60Kkn2EqKSqDsfQHTUQAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACN2YjLJZf26TNHvTu2ks9+3xihtwMNnaB1C2K3ppGkRgAAAAAOgAAAAAIAACAAAAAQWKG25xbe+THEYjJCUaLKx4WyyECEyz3MjVH2v5JbgiAAAAAmWzgwjt8Bm50ES9x/4qHcvzctusDf2ti9DAazfQsJWEAAAADyGijxqQKOVuXTY/OA9tjEBD19f8UWCMbqXMJ7ZrhD4KIT3QmMM7MQwSo7sD3fi9MDDCxoSjB1ONNuWEWnfaGK</DTS:Property>
+          </DTS:FtpConnection>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Копирование файла на FTP"
+      DTS:CreationName="Microsoft.FtpTask"
+      DTS:Description="Задача &quot;FTP&quot;"
+      DTS:DTSID="{FEA63C4C-1727-4295-A677-1BCCACBAF28E}"
+      DTS:ExecutableType="Microsoft.FtpTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Копирование файла на FTP"
+      DTS:TaskContact="FTP Task; Microsoft Corporation; SQL Server 2017 RC1; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FtpData
+          ConnectionName="{B9D4138E-AF3C-4627-A384-551D44B3784F}"
+          TaskOperationType="Receive"
+          TaskLocalPath="lclFTPsite"
+          TaskRemotePath="/ExpImpData/GroupAbon.csv" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--В данном разделе CDATA содержатся сведения о макете пакета. В данном разделе содержатся сведения о координатах (x,y), ширине и высоте.-->
+<!--В случае возникновения ошибки при редактировании этого раздела вручную его можно удалить. -->
+<!--Пакет можно загрузить обычным образом, но прежние сведения о макете будут утеряны, и конструктор автоматически перераспределит элементы в области конструктора.-->
+<Objects
+  Version="8">
+  <!--Все приведенные ниже узлы будут содержать свойства, не влияющие на поведение среды выполнения.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Копирование файла на FTP"
+          TopLeft="66,42" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
